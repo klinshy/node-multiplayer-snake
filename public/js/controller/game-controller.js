@@ -36,6 +36,12 @@ export default class GameController {
         const storedName = localStorage.getItem(ClientConfig.LOCAL_STORAGE.PLAYER_NAME);
         const storedBase64Image = localStorage.getItem(ClientConfig.LOCAL_STORAGE.PLAYER_IMAGE);
         this.socket.emit(ClientConfig.IO.OUTGOING.NEW_PLAYER, storedName, storedBase64Image);
+
+        /* global WA */
+        // WA is a global variable from @workadventure/iframe-api-typings
+        WA.onInit().then(() => {
+            this.playerNameUpdatedCallback(WA.player.name);
+        });
     }
 
     renderGame() {

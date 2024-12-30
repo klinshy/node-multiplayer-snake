@@ -4,6 +4,8 @@ const gameController = new GameController();
 /* global io */
 // io is a global variable for socket.io-client set from the view html
 
-WA.chat.sendChatMessage("Snake-Game  initialized", "Snake");
+/* global WA */
+// WA is a global variable from @workadventure/iframe-api-typings
+WA.chat.sendChatMessage('Snake-Game  initialized', 'Snake');
 
 gameController.connect(io);

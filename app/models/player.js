@@ -1,9 +1,8 @@
 'use strict';
-const { WA } = require("@workadventure/iframe-api-typings"); // Trying to import the WA object from the iframe-api-typings package to solve "ReferenceError: WA is not defined"
 class Player {
     constructor(id, name, color) {
         this.id = id;
-        this.name = name; //maybe add WA.player.name here????
+        this.name = name; // maybe add WA.player.name here????
         this.color = color;
         this.growAmount = 0;
         this.moveCounter = 0;
