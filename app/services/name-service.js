@@ -1,7 +1,5 @@
-//'use strict'; //uncomment once it works
+'use strict'; 
 
-/// <reference types="@workadventure/iframe-api-typings" /> 
-// David ones told me that this may help, and it did (but in a different case)
 
 require 
 
@@ -72,17 +70,13 @@ class NameService {
     }
 
     _generatePlayerName() {
-        try {
-            return WA.player.name; //this should retrieve the player name from the WorkAdventure player
-        } catch (error) {
-            console.error('Error getting WA player name:', error);
+
             return `Player ${this._getRandomNumber()}${this._getRandomNumber()}${this._getRandomNumber()}`;
         }
-    }
+    
 
     _getRandomNumber() {
         return Math.floor(Math.random() * 10);
-    }
-}
-
+    };
+};
 module.exports = NameService;

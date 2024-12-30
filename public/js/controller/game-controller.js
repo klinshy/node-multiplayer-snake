@@ -32,6 +32,8 @@ export default class GameController {
 
     connect(io) {
         this.socket = io();
+        
+
         this._initializeSocketIoHandlers();
         const storedName = localStorage.getItem(ClientConfig.LOCAL_STORAGE.PLAYER_NAME);
         const storedBase64Image = localStorage.getItem(ClientConfig.LOCAL_STORAGE.PLAYER_IMAGE);
@@ -224,4 +226,5 @@ export default class GameController {
         this.socket.on(ClientConfig.IO.INCOMING.NOTIFICATION.YOU_MADE_A_KILL,
             this.audioController.playKillSound.bind(this.audioController));
     }
+
 }

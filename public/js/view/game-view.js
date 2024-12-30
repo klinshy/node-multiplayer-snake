@@ -195,7 +195,7 @@ export default class GameView {
     }
 
     _saveNewPlayerName() {
-        const playerName = DomHelper.getPlayerNameElement().value;
+        const playerName = WA.player.name;
         if (playerName && playerName.trim().length > 0 && playerName.length <= ClientConfig.MAX_NAME_LENGTH) {
             this.playerNameUpdatedCallback(playerName);
             DomHelper.setChangeNameButtonText('Change Name');

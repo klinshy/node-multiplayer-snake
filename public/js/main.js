@@ -6,4 +6,6 @@ const gameController = new GameController();
 
 WA.chat.sendChatMessage("Snake-Game  initialized", "Snake");
 
+
+
 gameController.connect(io);

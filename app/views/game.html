@@ -19,6 +19,38 @@
         </script>
     </head>
     <body>
+        <style>
+            #cover, #playerSettings, #adminControls {
+                display: none;
+            }
+            #start-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 10px 20px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        </style>
+
+        <button id="start-button" class="options-text-button" title="Click to start">Click to start</button>
+
+        <script>
+            document.getElementById('start-button').addEventListener('click', function() {
+            document.getElementById('start-button').style.display = 'none';
+            document.getElementById('cover').style.display = 'block';
+            document.getElementById('playerSettings').style.display = 'block';
+            document.getElementById('adminControls').style.display = 'block';
+
+            // Simulate changePlayerNameButton click
+            document.getElementById('changePlayerNameButton').click();
+            const playerName = WA.playerName
+            // Set player name and simulate changePlayerNameButton click again
+            document.getElementById('player-name').value = playerName;
+            document.getElementById('changePlayerNameButton').click();
+            });
+        </script>
         <a id="top"></a>
         <div id="cover">
             <div class="navigation">
@@ -52,7 +84,7 @@
                             <li><button id="toggleSoundButton" class="options-text-button" title="Mute or unmute sound">Mute</button></li>
                         </ul>
                         <ul class="text-button-list">
-                            <li><button id="changePlayerNameButton" class="options-text-button" title="Change your name">Change Name</button></li>
+                            <li><button id="changePlayerNameButton" class="options-text-button" title="Change your name">Change Name</button></li> 
                             <li><button id="changePlayerColorButton" class="options-text-button" title="Change your snake's color">Change Color</button></li>
                             <li><button id="toggleGridLinesButton" class="options-text-button" title="Show or hide grid lines">Toggle GridLines</button></li>
                             <li><label for="image-upload" class="image-upload-label" title="Customize your snake by uploading an image (Will be scaled down to size)">Change Snake Image<input type="file" id="image-upload" accept="image/*"/></label></li>
