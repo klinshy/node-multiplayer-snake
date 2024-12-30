@@ -1,3 +1,4 @@
+/// <reference types="@workadventure/iframe-api-typings" /> 
 'use strict';
 const path = require('path');
 const GameController = require('./app/controllers/game-controller');
@@ -29,5 +30,6 @@ app.set('port', SERVER_PORT);
 server.listen(app.get('port'), () => {
     console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
+
 
 module.exports = app;

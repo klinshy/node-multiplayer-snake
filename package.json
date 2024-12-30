@@ -13,6 +13,7 @@
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha"
   },
   "devDependencies": {
+    "@workadventure/iframe-api-typings": "^1.23.4",
     "chai": "^3.5.0",
     "eslint": "^2.13.0",
     "eslint-config-airbnb": "^9.0.1",
@@ -25,6 +26,7 @@
     "supertest": "^1.2.0"
   },
   "dependencies": {
+    "@workadventure/scripting-api-extra": "^1.9.1",
     "express": "^4.14.0",
     "less-middleware": "^2.1.0",
     "serve-favicon": "^2.3.0",

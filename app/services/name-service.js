@@ -1,4 +1,9 @@
-'use strict';
+//'use strict'; //uncomment once it works
+
+/// <reference types="@workadventure/iframe-api-typings" /> 
+// David ones told me that this may help, and it did (but in a different case)
+
+require 
 
 /**
  * Generates names and ids, and stores them so they aren't reused
@@ -67,7 +72,12 @@ class NameService {
     }
 
     _generatePlayerName() {
-        return `Player ${this._getRandomNumber()}${this._getRandomNumber()}${this._getRandomNumber()}`;
+        try {
+            return WA.player.name; //this should retrieve the player name from the WorkAdventure player
+        } catch (error) {
+            console.error('Error getting WA player name:', error);
+            return `Player ${this._getRandomNumber()}${this._getRandomNumber()}${this._getRandomNumber()}`;
+        }
     }
 
     _getRandomNumber() {
