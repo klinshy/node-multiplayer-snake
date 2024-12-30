@@ -103,6 +103,22 @@
                         </ul>
                     </fieldset>
                 </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        WA.onInit().then(() => {
+                            const playerTags = WA.player.tags;
+                            const settingsMenu = document.getElementById('playerSettings');
+                            const adminControls = document.getElementById('adminControls');
+                            if (playerTags.includes('editor') || playerTags.includes('admin')) {
+                                settingsMenu.style.display = 'block';
+                                adminControls.style.display = 'block';
+                            } else {
+                                settingsMenu.style.display = 'none';
+                                adminControls.style.display = 'none';
+                            }
+                        });
+                    });
+                </script>
                 <button id="return-button" class="hidden-content" onclick="returnToGame()">Return to Game</button>
 
                 <script>
