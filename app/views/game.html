@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="css/global.css">
         <link rel="stylesheet" type="text/css" href="css/game.css">
         <link rel="stylesheet" type="text/css" href="css/settings.css">
-z        <script src="https://play.workadventu.re/iframe_api.js"></script>    <!-- this enables the API of WA -->
+      <script src="https://play.workadventu.re/iframe_api.js"></script>    <!-- this enables the API of WA -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 if (typeof WA !== 'undefined') {
@@ -16,14 +16,57 @@ z        <script src="https://play.workadventu.re/iframe_api.js"></script>    <!
             });
         </script>
     </head>
-    <body>
+    <style>
+        #cover {
+            display: none;
+        }
+    </style>
+    <script>
+        function showGame() {
+            document.getElementById('cover').style.display = 'none';
+            document.getElementById('start-button').style.display = 'none';
+            document.querySelector('.body-content').classList.remove('hidden-content');
+            document.querySelector('.navigation').classList.remove('hidden-content');
+            document.querySelector('#kill-messages').classList.remove('hidden-content');
+        }
+    </script>
+    <style>
+        #start-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .hidden-content {
+            display: none;
+        }
+    </style>
+    <button id="start-button" onclick="showGame()">Press to start</button>
+    <body onload="document.querySelector('.body-content').classList.add('hidden-content'); document.querySelector('.navigation').classList.add('hidden-content'); document.querySelector('#kill-messages').classList.add('hidden-content');"></body>
         <a id="top"></a>
-        <div id="cover">
+        <div id="cover"></div>
             <div class="navigation">
-                <label class="nav-label">You are <input id="player-name" readonly="readonly" maxlength="10"></input></label>
+                <label class="nav-label">Snake Adventure <input id="player-name" readonly="readonly" maxlength="10"></input></label>
                 <div class="nav-button-bar">
                     <a href="#top" id="play-or-watch-button" title="Spectate or rejoin game">Watch</a>
-                    <a href="#playerSettings" title="Go to settings">Settings</a>
+                   
                     <button id="full-screen-button" title="Go into full-screen mode"/>
                 </div>
             </div>
@@ -60,7 +103,52 @@ z        <script src="https://play.workadventu.re/iframe_api.js"></script>    <!
                         </ul>
                     </fieldset>
                 </div>
+                <button id="return-button" class="hidden-content" onclick="returnToGame()">Return to Game</button>
 
+                <script>
+                    function returnToGame() {
+                        document.getElementById('return-button').classList.add('hidden-content');
+                        document.getElementById('cover').style.display = 'none';
+                        document.querySelector('.body-content').classList.remove('blurred');
+                        document.querySelector('.navigation').classList.remove('blurred');
+                        document.querySelector('#kill-messages').classList.remove('blurred');
+                    }
+
+                    window.addEventListener('blur', function() {
+                        document.getElementById('return-button').classList.remove('hidden-content');
+                        document.getElementById('cover').style.display = 'block';
+                        document.querySelector('.game-board').classList.add('blurred');
+                        document.querySelector('.navigation').classList.add('blurred');
+                        document.querySelector('#kill-messages').classList.add('blurred');
+                    });
+
+                    window.addEventListener('focus', function() {
+                        document.getElementById('return-button').classList.add('hidden-content');
+                        document.getElementById('cover').style.display = 'none';
+                        document.querySelector('.game-board').classList.remove('blurred');
+                        document.querySelector('.navigation').classList.remove('blurred');
+                        document.querySelector('#kill-messages').classList.remove('blurred');
+                    });
+                </script>
+
+                <style>
+                    #return-button {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        padding: 10px 20px;
+                        font-size: 16px;
+                        cursor: pointer;
+                        animation: pulse 1.5s infinite;
+                        z-index: 1000; /* Ensure the button is above blurred content */
+                    }
+
+                    .blurred {
+                        filter: blur(5px);
+                    }
+                </style>
+                </style>
 
                 <div id="adminControls" class="settings-menu">
                     <fieldset>
